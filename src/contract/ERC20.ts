@@ -25,10 +25,6 @@ export class ERC20 extends ContractAbstract {
 	}
 	public getERC20Contract = getERC20Contract
 
-	public getContractAddress(contractKey: Contracts) {
-		return this.config[this.chainId][contractKey].address
-	}
-
 	// 查授权额度 
 	public async getTokenAllowance(token: string, spender: string): Promise<BigNumber> {
 		const contract = getERC20Contract(token, this.contract.provider);

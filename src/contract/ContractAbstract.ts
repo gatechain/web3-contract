@@ -5,20 +5,16 @@ export enum Contracts {
 }
 
 abstract class ContractAbstract {
-	public chainId
-	public config: Config
 	public contract: HipoContract
 	
 	public Contracts = Contracts
 
 	constructor(props: any) {
-		this.config = props.config
-		this.chainId = props.chainId
 		this.contract = props.contract
 	}
 
 	public getContractAddress (contractKey: Contracts) {
-		return this.config[this.chainId][contractKey].address
+		return this.contract.config[this.contract.chainId][contractKey].address
 	}
 	
 }
