@@ -1,5 +1,5 @@
 {
-  "name": "@hipo/contract",
+  "name": "hipo-contract",
   "version": "1.0.0",
   "description": "hipo-contract",
   "author": "thorneLew",
@@ -24,8 +24,5 @@
     "typescript": "^4.6.2",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
-  },
-  "peerDependencies": {
-    "react": ">=16.8"
   }
 }
