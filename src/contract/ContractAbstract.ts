@@ -1,4 +1,4 @@
-import { Config, HipoContract } from "../index"
+import { HipoContract } from "../index"
 
 export enum Contracts {
 	perpetualContract = 'perpetualContract'
@@ -14,9 +14,8 @@ abstract class ContractAbstract {
 	}
 
 	public getContractAddress (contractKey: Contracts) {
-		return this.contract.config[this.contract.chainId][contractKey].address
+		return this.contract.config[this.contract.chainId][`${contractKey}Address`]
 	}
-	
 }
 
 export default ContractAbstract
