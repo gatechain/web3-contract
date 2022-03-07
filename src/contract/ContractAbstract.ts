@@ -14,6 +14,9 @@ abstract class ContractAbstract {
 	}
 
 	public getContractAddress (contractKey: Contracts) {
+		if (!this.contract.config[this.contract.chainId]) {
+			return ''
+		}
 		return this.contract.config[this.contract.chainId][`${contractKey}Address`]
 	}
 }
