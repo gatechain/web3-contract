@@ -1,6 +1,6 @@
 import { BigNumber } from "@ethersproject/bignumber";
 import { Signer, providers, Contract } from "ethers"
-import { fixedToInt } from "../utils";
+import { fixedToInt, intToFixed } from "../utils";
 import ERC20ABI from './abis/ERC20'
 import ContractAbstract, { Contracts } from "./ContractAbstract";
 
@@ -24,6 +24,13 @@ export class ERC20 extends ContractAbstract {
 		super(props)
 	}
 	public getERC20Contract = getERC20Contract
+
+	// 获取用户token的余额
+	public async getBalanceOf(token: string): Promise<[string, BigNumber]> {
+		const {contract, decimals} = await getERC20(token, this.contract.provider);
+		const balance = await contract.balanceOf(this.contract.currAccount)
+		return [intToFixed(balance, decimals), balance]
+	}
 
 	// 查授权额度 
 	public async getTokenAllowance(token: string, spender: string): Promise<BigNumber> {
