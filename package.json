@@ -1,13 +1,16 @@
 {
   "name": "hipo-contract",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "hipo-contract",
   "author": "thorneLew",
   "license": "MIT",
   "type": "commonjs",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".":  "./dist/index.js",
+    "./dist/*": "./dist/*"
+  },
   "files": [
     "dist/*"
   ],

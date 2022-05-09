@@ -1,6 +1,7 @@
 import { Signer, providers } from "ethers"
 import { ERC20 } from "./contract/ERC20";
 import Perpetual from "./contract/Perpetual";
+export * from './utils'
 
 export interface Config {
 	[key: number]: {
@@ -19,6 +20,7 @@ export class HipoContract {
 	public ERC20: ERC20
 	public config: Config
 	public chainId: number
+	[key: string]: any
 
 	constructor (props: any) {
 		const resultPorps = {
@@ -32,6 +34,14 @@ export class HipoContract {
 		
 		this.ERC20 = new ERC20(resultPorps)
 		this.perpetual = new Perpetual(resultPorps)
+	}
+	
+	public registerContract (ContractClass: any): void {
+		const attr = ContractClass.name
+		if (this[attr]) {
+			throw new Error(attr + ' already exists.')
+		}
+		this[attr] = new ContractClass({contract: this})
 	}
 	
 	public sign (value: string) {
