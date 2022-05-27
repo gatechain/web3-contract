@@ -6,6 +6,8 @@ export enum Contracts {
 }
 
 abstract class ContractAbstract {
+	// Registercontract use 
+	static contractName?: string
 	public contract: HipoContract
 	
 	public Contracts = Contracts
@@ -43,7 +45,6 @@ abstract class ContractAbstract {
 	public getContractSigner (address?: string) {
 		try {
 			return new Contract(this._getAddress(address), this.Abi, this.contract.signer)
-			// return new Contract(this.getContractAddress(this.Contracts.perpetualContract), this.Abi, this.contract.signer)
 		} catch (error) {
 			throw error
 		}	

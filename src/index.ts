@@ -37,11 +37,13 @@ export class HipoContract {
 	}
 	
 	public registerContract (ContractClass: any): void {
-		const attr = ContractClass.name
+		const attr = ContractClass.contractName
 		if (this[attr]) {
-			throw new Error(attr + ' already exists.')
+			console.warn(attr + ' already exists.')
+			return
 		}
 		this[attr] = new ContractClass({contract: this})
+		this[attr].name = attr
 	}
 	
 	public sign (value: string) {
