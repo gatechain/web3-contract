@@ -2,13 +2,23 @@ import { Signer, providers } from "ethers"
 import { ERC20 } from "./contract/ERC20";
 import Perpetual from "./contract/Perpetual";
 export * from './utils'
-
+import gatewallet from 'gatewallet'
 export interface Config {
 	[key: number]: {
 	  perpetualContract: {
 		address: string
 	  },
 	  [key: string]: any,
+	}
+	GateWalletConfig?: {
+		METAMASK_MESSAGE?: string
+        EIP_712_PROVIDER?: string
+        EIP_712_VERSION?: string
+        CONTRACT_ADDRESSES?: {
+			GateChain: string,
+			WithdrawalDelayer: string
+		}
+        CREATE_ACCOUNT_AUTH_MESSAG?: string
 	}
 }
 
@@ -20,6 +30,9 @@ export class HipoContract {
 	public ERC20: ERC20
 	public config: Config
 	public chainId: number
+	private gateWallet?: any
+	private gateAddress?: string
+
 	[key: string]: any
 
 	constructor (props: any) {
@@ -62,5 +75,32 @@ export class HipoContract {
 	public setProvider (provider: providers.Provider) {
 		this.provider = provider
 		this.signer = (this.provider as any).getSigner(this.currAccount)
+	}
+	
+	public async createWalletFromEtherAccount(): Promise<{gateWallet: any, gateAddress: string}> {
+		const {gateWallet, gateAddress} = await gatewallet.createWalletFromEtherAccount(this.signer, this?.config?.GateWalletConfig)
+		this.gateWallet = gateWallet
+		this.gateAddress = gateAddress
+		return {gateWallet, gateAddress}
+	}
+
+	public getGateWallet () {
+		if (this.gateWallet) {
+			return this.gateWallet
+		}
+	}
+
+	public getGateAddress () {
+		if (this.gateAddress) {
+			return this.gateAddress
+		}
+	}
+
+	public signCreateAccountAuthorization() {
+		if (!this.gateWallet) {
+			throw new Error('Please use hipocontract in advance Createwalletfrometheraccount initialize gatewallet.')
+		}
+
+		return this.gateWallet.signCreateAccountAuthorization(this.provider, this.signer)
 	}
 }

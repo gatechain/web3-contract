@@ -1,6 +1,6 @@
 {
   "name": "hipo-contract",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "hipo-contract",
   "author": "thorneLew",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "exports": {
-    ".":  "./dist/index.js",
+    ".": "./dist/index.js",
     "./dist/*": "./dist/*"
   },
   "files": [
@@ -18,7 +18,8 @@
     "start": "tsc -w"
   },
   "dependencies": {
-    "ethers": "^5.5.4"
+    "ethers": "^5.5.4",
+    "gatewallet": "^1.0.1"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
