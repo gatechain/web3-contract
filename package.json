@@ -1,6 +1,6 @@
 {
   "name": "hipo-contract",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "hipo-contract",
   "author": "thorneLew",
   "license": "MIT",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "ethers": "^5.5.4",
-    "gatewallet": "^1.0.11"
+    "gatewallet": "^1.0.12"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
