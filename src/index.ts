@@ -77,8 +77,8 @@ export class HipoContract {
 		this.signer = (this.provider as any).getSigner(this.currAccount)
 	}
 	
-	public async createWalletFromGateChainAccount(): Promise<{gateWallet: any, gateAddress: string}> {
-		const {gateWallet, gateAddress} = await gatewallet.createWalletFromGateChainAccount(this.signer, this?.config?.GateWalletConfig)
+	public async createWalletFromGateChainAccount(privateKeyHex?: string | null): Promise<{gateWallet: any, gateAddress: string}> {
+		const {gateWallet, gateAddress} = await gatewallet.createWalletFromGateChainAccount(this.signer, this?.config[this.chainId]?.GateWalletConfig, privateKeyHex || null)
 		this.gateWallet = gateWallet
 		this.gateAddress = gateAddress
 		return {gateWallet, gateAddress}
