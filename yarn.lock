@@ -1423,10 +1423,10 @@ functions-have-names@^1.2.2:
   resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
-gatewallet@^1.0.19:
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/gatewallet/-/gatewallet-1.0.19.tgz#4f07f98cc6ec78090d0bb4a43899658f4855ee6c"
-  integrity sha512-M95VZS9UWPtwB6yCHznnuLBU8B44A/6hu+K2r/E5PN6/DxyIfhaMxjFZbA6JaAvQhYhXpiggKouPLXZfUAZc2Q==
+gatewallet@^1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/gatewallet/-/gatewallet-1.0.20.tgz#d413e902dd2a8d769abcde5e8cf65c3d9b0c4a16"
+  integrity sha512-09z5qkfJwXzcmjJGQtnR5KWkPEJrs0h33TzFZpasA7xZf68qUG5V0ZeM4ajhGj0hdKxFnPqU6uEK5WZJVY66qg==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     assert "^2.0.0"
