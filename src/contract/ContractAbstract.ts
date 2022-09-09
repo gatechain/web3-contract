@@ -2,53 +2,53 @@ import { Contract } from "ethers"
 import { HipoContract } from "../index"
 
 export enum Contracts {
-	perpetualContract = 'perpetualContract'
+  perpetualContract = 'perpetualContract'
 }
 
 abstract class ContractAbstract {
-	// Registercontract use 
-	static contractName?: string
-	public contract: HipoContract
-	
-	public Contracts = Contracts
-	public Abi: any = {}
-	public address?: string
-	public name?: string
+  // Registercontract use 
+  static contractName?: string
+  public contract: HipoContract
 
-	constructor(props: any) {
-		this.contract = props.contract
-	}
+  public Contracts = Contracts
+  public Abi: any = {}
+  public address?: string
+  public name?: string
 
-	public setAddress (address: string) {
-		this.address = address
-	}
+  constructor(props: any) {
+    this.contract = props.contract
+  }
 
-	private _getAddress (address?: string) {
-		return address || this.getContractAddress(this.name) || ''
-	}
+  public setAddress(address: string) {
+    this.address = address
+  }
 
-	public getContractAddress (contractKey: Contracts & any) {
-		if (!this.contract.config[this.contract.chainId]) {
-			return ''
-		}
-		return this.contract.config[this.contract.chainId][`${contractKey}Address`]
-	}
+  private _getAddress(address?: string) {
+    return address || this.getContractAddress(this.name) || ''
+  }
 
-	public getContractProvider (address?: string) {
-		try {
-			return new Contract(this._getAddress(address), this.Abi, this.contract.provider)
-		} catch (error) {
-			throw error
-		}	
-	}
+  public getContractAddress(contractKey: Contracts & any) {
+    if (!this.contract.config[this.contract.chainId]) {
+      return ''
+    }
+    return this.contract.config[this.contract.chainId][`${contractKey}Address`]
+  }
 
-	public getContractSigner (address?: string) {
-		try {
-			return new Contract(this._getAddress(address), this.Abi, this.contract.signer)
-		} catch (error) {
-			throw error
-		}	
-	}
+  public getContractProvider(address?: string) {
+    try {
+      return new Contract(this._getAddress(address), this.Abi, this.contract.provider)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  public getContractSigner(address?: string) {
+    try {
+      return new Contract(this._getAddress(address), this.Abi, this.contract.signer)
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 export default ContractAbstract
