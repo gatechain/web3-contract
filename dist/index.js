@@ -14,9 +14,9 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HipoContract = void 0;
+exports.Web3Contract = void 0;
 __exportStar(require("./utils"), exports);
-class HipoContract {
+class Web3Contract {
     constructor(props) {
         this.currAccount = props.currAccount;
         this.provider = props.provider;
@@ -48,4 +48,4 @@ class HipoContract {
         this.signer = this.provider.getSigner(this.currAccount);
     }
 }
-exports.HipoContract = HipoContract;
+exports.Web3Contract = Web3Contract;

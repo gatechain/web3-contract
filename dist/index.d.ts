@@ -5,7 +5,7 @@ export interface Config {
         [key: string]: any;
     };
 }
-export declare class HipoContract {
+export declare class Web3Contract {
     provider: providers.Provider;
     currAccount: string;
     signer: Signer;

@@ -1,11 +1,11 @@
 import { Contract } from "ethers";
-import { HipoContract } from "../index";
+import { Web3Contract } from "../index";
 export declare enum Contracts {
     perpetualContract = "perpetualContract"
 }
 declare abstract class ContractAbstract {
     static contractName?: string;
-    contract: HipoContract;
+    contract: Web3Contract;
     Contracts: typeof Contracts;
     Abi: any;
     address?: string;

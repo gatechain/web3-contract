@@ -1,54 +1,62 @@
-import { Contract } from "ethers"
-import { HipoContract } from "../index"
+import { Contract } from "ethers";
+import { Web3Contract } from "../index";
 
 export enum Contracts {
-  perpetualContract = 'perpetualContract'
+  perpetualContract = "perpetualContract",
 }
 
 abstract class ContractAbstract {
-  // Registercontract use 
-  static contractName?: string
-  public contract: HipoContract
+  // Registercontract use
+  static contractName?: string;
+  public contract: Web3Contract;
 
-  public Contracts = Contracts
-  public Abi: any = {}
-  public address?: string
-  public name?: string
+  public Contracts = Contracts;
+  public Abi: any = {};
+  public address?: string;
+  public name?: string;
 
   constructor(props: any) {
-    this.contract = props.contract
+    this.contract = props.contract;
   }
 
   public setAddress(address: string) {
-    this.address = address
+    this.address = address;
   }
 
   private _getAddress(address?: string) {
-    return address || this.getContractAddress(this.name) || ''
+    return address || this.getContractAddress(this.name) || "";
   }
 
   public getContractAddress(contractKey: Contracts & any) {
     if (!this.contract.config[this.contract.chainId]) {
-      return ''
+      return "";
     }
-    return this.contract.config[this.contract.chainId][`${contractKey}Address`]
+    return this.contract.config[this.contract.chainId][`${contractKey}Address`];
   }
 
   public getContractProvider(address?: string) {
     try {
-      return new Contract(this._getAddress(address), this.Abi, this.contract.provider)
+      return new Contract(
+        this._getAddress(address),
+        this.Abi,
+        this.contract.provider
+      );
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 
   public getContractSigner(address?: string) {
     try {
-      return new Contract(this._getAddress(address), this.Abi, this.contract.signer)
+      return new Contract(
+        this._getAddress(address),
+        this.Abi,
+        this.contract.signer
+      );
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 }
 
-export default ContractAbstract
+export default ContractAbstract;

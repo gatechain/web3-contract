@@ -16,11 +16,11 @@ class ContractAbstract {
         this.address = address;
     }
     _getAddress(address) {
-        return address || this.getContractAddress(this.name) || '';
+        return address || this.getContractAddress(this.name) || "";
     }
     getContractAddress(contractKey) {
         if (!this.contract.config[this.contract.chainId]) {
-            return '';
+            return "";
         }
         return this.contract.config[this.contract.chainId][`${contractKey}Address`];
     }

@@ -7,7 +7,7 @@ export interface Config {
   };
 }
 
-export class HipoContract {
+export class Web3Contract {
   public provider: providers.Provider;
   public currAccount: string;
   public signer: Signer;
