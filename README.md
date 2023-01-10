@@ -1,4 +1,4 @@
-# webe-contract
+# web3-contract
 
 ### install
 
