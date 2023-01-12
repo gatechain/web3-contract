@@ -1,19 +1,21 @@
 import { Contract } from "ethers";
 import { Web3Contract } from "../index";
-export declare enum Contracts {
-    perpetualContract = "perpetualContract"
+export declare type BigNumber = any;
+export interface IOption {
+    gasLimit?: Number;
+    from?: string;
+    value?: string;
+    address?: string;
 }
 declare abstract class ContractAbstract {
     static contractName?: string;
     contract: Web3Contract;
-    Contracts: typeof Contracts;
     Abi: any;
-    address?: string;
     name?: string;
     constructor(props: any);
-    setAddress(address: string): void;
+    parseOption(opt?: IOption): [address: string | undefined, rest: Omit<IOption, "address">];
     private _getAddress;
-    getContractAddress(contractKey: Contracts & any): any;
+    getContractAddress(contractKey: any): any;
     getContractProvider(address?: string): Contract;
     getContractSigner(address?: string): Contract;
 }

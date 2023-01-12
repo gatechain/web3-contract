@@ -1,8 +1,12 @@
 import { Contract } from "ethers";
 import { Web3Contract } from "../index";
 
-export enum Contracts {
-  perpetualContract = "perpetualContract",
+export type BigNumber = any;
+export interface IOption {
+  gasLimit?: Number;
+  from?: string;
+  value?: string;
+  address?: string;
 }
 
 abstract class ContractAbstract {
@@ -10,24 +14,28 @@ abstract class ContractAbstract {
   static contractName?: string;
   public contract: Web3Contract;
 
-  public Contracts = Contracts;
   public Abi: any = {};
-  public address?: string;
   public name?: string;
 
   constructor(props: any) {
     this.contract = props.contract;
   }
 
-  public setAddress(address: string) {
-    this.address = address;
+  public parseOption(
+    opt?: IOption
+  ): [address: string | undefined, rest: Omit<IOption, "address">] {
+    if (!opt) {
+      return [undefined, {}];
+    }
+    const { address, ...rest } = opt;
+    return [address, rest];
   }
 
   private _getAddress(address?: string) {
     return address || this.getContractAddress(this.name) || "";
   }
 
-  public getContractAddress(contractKey: Contracts & any) {
+  public getContractAddress(contractKey: any) {
     if (!this.contract.config[this.contract.chainId]) {
       return "";
     }
