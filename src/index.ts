@@ -1,4 +1,4 @@
-import { Signer, providers } from "ethers";
+import { providers, VoidSigner } from "ethers";
 export * from "./utils";
 
 export interface Config {
@@ -10,7 +10,7 @@ export interface Config {
 export class Web3Contract {
   public provider: providers.Provider;
   public currAccount: string;
-  public signer: Signer;
+  public signer: VoidSigner;
   public config: Config;
   public chainId: number;
 
