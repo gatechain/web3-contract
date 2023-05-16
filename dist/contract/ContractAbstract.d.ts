@@ -1,6 +1,6 @@
 import { Contract } from "ethers";
 import { Web3Contract } from "../index";
-export declare type BigNumber = any;
+export type BigNumber = any;
 export interface IOption {
     gasLimit?: Number;
     from?: string;

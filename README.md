@@ -5,9 +5,15 @@
 ```json
 // package.json
 {
-  "web3-contract": "https://github.com/gatechain/web3-contract#3.0.0"
+  "web3-contract": "https://github.com/gatechain/web3-contract#3.0.1"
 }
+|
+dist/umd/web3-contract.x.x.x.js // window.web3Contract
 ```
+
+### 前置依赖
+
+- ethers | window.ethers
 
 ### Used
 
