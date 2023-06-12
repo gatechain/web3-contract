@@ -1,4 +1,4 @@
-import { Contract } from "ethers";
+import { Contract } from "../utils";
 import { Web3Contract } from "../index";
 
 export type BigNumber = any;
@@ -13,12 +13,13 @@ abstract class ContractAbstract {
   // Registercontract use
   static contractName?: string;
   public contract: Web3Contract;
+  private _contractName_: string;
 
   public Abi: any = {};
-  public name?: string;
 
   constructor(props: any) {
     this.contract = props.contract;
+    this._contractName_ = props._contractName_;
   }
 
   public parseOption(
@@ -32,14 +33,16 @@ abstract class ContractAbstract {
   }
 
   private _getAddress(address?: string) {
-    return address || this.getContractAddress(this.name) || "";
+    return address || this.getContractAddress(this._contractName_) || "";
   }
 
-  public getContractAddress(contractKey: any) {
+  public getContractAddress(contractKey?: any) {
     if (!this.contract.config[this.contract.chainId]) {
       return "";
     }
-    return this.contract.config[this.contract.chainId][`${contractKey}Address`];
+    return this.contract.config[this.contract.chainId][
+      `${contractKey || this._contractName_}Address`
+    ];
   }
 
   public getContractProvider(address?: string) {

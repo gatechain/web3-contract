@@ -30,8 +30,7 @@ export class Web3Contract {
       console.warn(attr + " already exists.");
       return;
     }
-    this[attr] = new ContractClass({ contract: this });
-    this[attr].name = attr;
+    this[attr] = new ContractClass({ contract: this, _contractName_: attr });
   }
 
   public sign(value: string) {

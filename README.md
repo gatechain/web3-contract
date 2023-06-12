@@ -4,7 +4,7 @@
 
 ```
 {
-  "web3-contract": "https://github.com/gatechain/web3-contract#3.0.1"
+  "web3-contract": "https://github.com/gatechain/web3-contract#3.1.0"
 }
 ```
 
@@ -22,4 +22,8 @@ import { Web3Contract } from "web3-contract";
 
 ### log
 
-1. delete setAddress & address : version 3.0.0
+| version | log                                                     |
+| ------- | ------------------------------------------------------- |
+| 3.1.0   | delete ContractAbstract name , utils fixdToDe, add jest |
+| 3.0.1   | old version                                             |
+| 3.0.0   | delete setAddress & address                             |

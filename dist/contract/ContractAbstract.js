@@ -11,11 +11,12 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const ethers_1 = require("ethers");
+const utils_1 = require("../utils");
 class ContractAbstract {
     constructor(props) {
         this.Abi = {};
         this.contract = props.contract;
+        this._contractName_ = props._contractName_;
     }
     parseOption(opt) {
         if (!opt) {
@@ -25,17 +26,17 @@ class ContractAbstract {
         return [address, rest];
     }
     _getAddress(address) {
-        return address || this.getContractAddress(this.name) || "";
+        return address || this.getContractAddress(this._contractName_) || "";
     }
     getContractAddress(contractKey) {
         if (!this.contract.config[this.contract.chainId]) {
             return "";
         }
-        return this.contract.config[this.contract.chainId][`${contractKey}Address`];
+        return this.contract.config[this.contract.chainId][`${contractKey || this._contractName_}Address`];
     }
     getContractProvider(address) {
         try {
-            return new ethers_1.Contract(this._getAddress(address), this.Abi, this.contract.provider);
+            return new utils_1.Contract(this._getAddress(address), this.Abi, this.contract.provider);
         }
         catch (error) {
             throw error;
@@ -43,7 +44,7 @@ class ContractAbstract {
     }
     getContractSigner(address) {
         try {
-            return new ethers_1.Contract(this._getAddress(address), this.Abi, this.contract.signer);
+            return new utils_1.Contract(this._getAddress(address), this.Abi, this.contract.signer);
         }
         catch (error) {
             throw error;

@@ -1,4 +1,4 @@
-import { Contract } from "ethers";
+import { Contract } from "../utils";
 import { Web3Contract } from "../index";
 export type BigNumber = any;
 export interface IOption {
@@ -10,12 +10,12 @@ export interface IOption {
 declare abstract class ContractAbstract {
     static contractName?: string;
     contract: Web3Contract;
+    private _contractName_;
     Abi: any;
-    name?: string;
     constructor(props: any);
     parseOption(opt?: IOption): [address: string | undefined, rest: Omit<IOption, "address">];
     private _getAddress;
-    getContractAddress(contractKey: any): any;
+    getContractAddress(contractKey?: any): any;
     getContractProvider(address?: string): Contract;
     getContractSigner(address?: string): Contract;
 }
