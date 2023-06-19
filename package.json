@@ -1,6 +1,6 @@
 {
   "name": "hipo-contract",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "hipo-contract",
   "author": "thorneLew",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "start": "tsc -w"
   },
   "dependencies": {
-    "ethers": "^5.5.4",
+    "ethers": "^5.7.2",
     "gatewallet": "^1.0.24"
   },
   "devDependencies": {
